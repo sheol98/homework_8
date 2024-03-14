@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №5</title>
+  </head>
+  <body>
+    <h1>Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:</h1>
+    <ol>
+      <li>двійок</li>
+      <li>кількість хороших оцінок (добре, відмінно);</li>
+      <li>кількість оцінок, які нижче середнього.</li>
+    </ol>
+    <script>
+      let userScore = [2, 5, 3, 5, 4, 2, 3, 4, 4];
+      // 1)	двійок
+      function isTwo(...userScore) {
+        let c = 0;
+        for (let i = 0; i < userScore.length; i++) {
+          if (userScore[i] === 2) c++;
+        }
+        return c;
+      }
+      document.write(`Кількість двійок - ${isTwo(...userScore)}<br>`);
+      // 2)	кількість хороших оцінок (добре, відмінно);
+      function isFourAndFive(...userScore) {
+        let c = 0;
+        for (let i = 0; i < userScore.length; i++) {
+          if (userScore[i] === 4 || userScore[i] === 5) c++;
+        }
+        return c;
+      }
+      document.write(
+        `Кількість хороших оцінок (добре, відмінно) - ${isFourAndFive(
+          ...userScore
+        )}<br>`
+      );
+      // 3)	кількість оцінок, які нижче середнього.
+      function averageScore(...userScore) {
+        s = 0;
+        for (let i = 0; i < userScore.length; i++) {
+          s += userScore[i];
+        }
+        return s / userScore.length;
+      }
+      let average = Math.round(averageScore(...userScore));
+
+      function quntityScoreSmallAverage(average, ...userScore) {
+        let c = 0;
+        for (let i = 0; i < userScore.length; i++) {
+          if (userScore[i] < average) c++;
+        }
+        return c;
+      }
+      document.write(
+        `Кількість оцінок, які нижче середнього - ${quntityScoreSmallAverage(
+          average,
+          ...userScore
+        )}`
+      );
+    </script>
+  </body>
+</html>
